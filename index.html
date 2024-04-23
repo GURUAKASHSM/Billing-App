@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id"
+        content="960981261075-cm0tni0lhpcbbjfc1e9l1c9d9ak4fld0.apps.googleusercontent.com">
+    <title>IMAGE-SPEECH</title>
+    <!-- <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        };
+    </script> -->
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IMAGE-SPEECH</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="manifest" href="manifest.json"> -->
+        <!-- <script>
+            //if browser support service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js');
+            };
+        </script> -->
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+            #store-list img {
+                width: 100%;
+                height: 170px;
+                margin-bottom: 7px;
+            }
+
+            #store-list h4.title-store a:hover {
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 1s ease;
+                -ms-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                transition: all 1s ease;
+                color: #f1c40f;
+            }
+
+            #store-list h4.title-store a {
+                color: #f39c12;
+            }
+
+
+            .btn.btn-default {
+                border-color: #bdc3c7;
+                background-color: #bdc3c7;
+                border: 1px solid #bdc3c7;
+            }
+
+
+            .btn.btn-warning {
+                border-color: #f1c40f;
+                background-color: #f1c40f;
+                border: 1px solid #f1c40f;
+            }
+        </style>
+        <lin rel="icon" type="image/jpg" href="templates\icon.jpg"> <!-- Added title icon -->
+
+            <style>
+                /* Set the background color to dark black */
+
+                h1,
+                form {
+                    text-align: center;
+                }
+
+
+                /* Drag and Drop area */
+                .drag-drop-area {
+                    border: 2px dashed #337ab7;
+                    /* Dashed blue border for the drag and drop area */
+                    padding: 20px;
+                    margin-top: 20px;
+                    border-radius: 5px;
+                    text-align: center;
+                }
+
+                .drag-drop-area p {
+                    margin: 0;
+                }
+
+                /* Align labels and radio buttons horizontally */
+                .language-label {
+                    display: inline-block;
+                    margin-right: 10px;
+                    font-size: 14px;
+                    margin-left: 5px;
+                }
+
+                .language-radio {
+                    display: inline-block;
+                }
+
+
+
+                .text-box {
+                    width: 80%;
+                    padding: 10px;
+                    border: 2px solid #337ab7;
+                    border-radius: 7px;
+                    background-color: #f0f0f0;
+                    color: #333;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                    /* You can adjust the font size as needed */
+                    height: 20%;
+                }
+            </style>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+                integrity="sha512-XrlRqfzd7cwbTpoK3mL92Gvpr5Y6UQyKcJvX0+AexBu6BiCZPlYIWt+EifVHJyAdHb+/ZymD0w9es2NTkYq5rA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <style>
+                .mobile-container {
+                    max-width: 480px;
+                    margin: auto;
+                    background-color: rgba(0, 0, 0, 0);
+                    height: 500px;
+                    color: white;
+                    border-radius: 10px;
+                    overflow-x: auto;
+                    /* Enable horizontal scrollbar */
+                }
+
+                .topnav {
+                    overflow: hidden;
+                    background-image: url("./images/bg-nav.jpg");
+                    position: relative;
+                    transition: all 0.5s ease;
+                    white-space: nowrap;
+                    /* Prevent line breaks */
+                }
+
+                .topnav #myLinks {
+                    display: none;
+                    animation: slideRightToLeft 0.5s ease;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding-right: 60px;
+                    /* Add padding to the right */
+                }
+
+                @keyframes slideRightToLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateX(0%);
+                    }
+                }
+
+                .topnav a {
+                    color: white;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 17px;
+                    transition: background-color 0.5s ease, color 0.5s ease;
+                    display: inline-block;
+                    /* Make sure the links are displayed in a row */
+                }
+
+                .topnav a.icon {
+                    float: right;
+                    transition: transform 0.5s ease;
+                }
+
+                .topnav a.icon.rotate {
+                    transform: rotate(45deg);
+                }
+
+                .topnav a.icon.x::before {
+                    content: "\f00d";
+                    /* Unicode for times symbol */
+                }
+
+                .topnav:hover {
+                    background-color: rgba(0, 0, 0, 0);
+                    color: white;
+                }
+
+                .icon:hover {
+                    color: white;
+                    font-size: 18px;
+                }
+
+
+                .navicons:hover {
+                    background-color: #ddd;
+                    color: black;
+                    border-radius: 5px;
+                }
+
+                .active {
+                    background-color: rgba(0, 0, 0, 0.057);
+                    color: white;
+                    padding: 5px;
+                }
+
+                .slidebuttons {
+                    width: 33.3333%;
+                    height: 50px;
+                    font-family: Poppins-Medium;
+                    font-stretch: 100%;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    color: white;
+                    margin: 0px;
+                    font-size: 15px;
+                    border: none;
+                }
+
+                .hideborder {
+                    border-top: 0px;
+                    border-bottom: 0px;
+                    border-left: 1px;
+                    border-right: 1px;
+                    border-style: solid;
+                }
+
+                .borderradiusleft {
+                    border-radius: 30px 0px 0px 30px;
+                    background-color: rgb(0, 208, 255);
+                }
+
+                .borderradiusright {
+                    border-radius: 0px 30px 30px 0px;
+                    background-color: rgb(0, 208, 255);
+                }
+
+                .button1:hover,
+                .button2:hover,
+                .button3:hover {
+                    background-color: rgba(0, 0, 0, 0);
+                }
+
+                .button3:hover {
+                    background-color: rgba(0, 0, 0, 0);
+                }
+
+                input[type="file"] {
+                    padding: 4px;
+                    margin: -4px;
+                    position: relative;
+                    outline: none;
+
+                    /* File Selector Button Styles */
+                    &::file-selector-button {
+                        border-radius: 4px;
+                        padding: 0 16px;
+                        height: 40px;
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid rgba(#000, 0.16);
+                        box-shadow: 0px 1px 0px rgba(#000, 0.05);
+                        margin-right: 16px;
+                        width: 132px;
+                        color: transparent;
+
+                        @supports (-moz-appearance: none) {
+                            color: var(--primary-color);
+                        }
+
+                        &:hover {
+                            background-color: #f3f4f6;
+                        }
+
+                        &:active {
+                            background-color: #e5e7eb;
+                        }
+                    }
+
+                    /* Faked label styles and icon */
+                    &::before {
+                        position: absolute;
+                        pointer-events: none;
+                        top: 14px;
+                        left: 16px;
+                        height: 20px;
+                        width: 20px;
+                        content: "";
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+                    }
+
+                    &::after {
+                        position: absolute;
+                        pointer-events: none;
+                        top: 16px;
+                        left: 40px;
+                        color: var(--primary-color);
+                        content: "Upload File";
+                    }
+
+                    /* Handle Component Focus */
+                    &:focus-within::file-selector-button,
+                    &:focus::file-selector-button {
+                        outline: 2px solid var(--primary-color);
+                        outline-offset: 2px;
+                    }
+                }
+
+                .profile-image {
+                    height: 30px;
+                    border-radius: 15px;
+                }
+
+                .card {
+                    width: 350px;
+                    background-color: #efefef;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.5s;
+                }
+
+                .image img {
+                    transition: all 0.5s
+                }
+
+                .card:hover .image img {
+                    transform: scale(1.5)
+                }
+
+                .btn {
+                    height: 140px;
+                    width: 140px;
+                    border-radius: 50%
+                }
+
+                .name {
+                    font-size: 22px;
+                    font-weight: bold
+                }
+
+                .idd {
+                    font-size: 14px;
+                    font-weight: 600
+                }
+
+                .idd1 {
+                    font-size: 12px
+                }
+
+                .number {
+                    font-size: 22px;
+                    font-weight: bold
+                }
+
+                .follow {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #444444
+                }
+
+                .btn1 {
+                    height: 40px;
+                    width: 150px;
+                    border: none;
+                    background-color: #000;
+                    color: #aeaeae;
+                    font-size: 15px
+                }
+
+                .text span {
+                    font-size: 13px;
+                    color: #545454;
+                    font-weight: 500
+                }
+
+                .icons i {
+                    font-size: 19px
+                }
+
+                hr .new1 {
+                    border: 1px solid
+                }
+
+                .join {
+                    font-size: 14px;
+                    color: #a0a0a0;
+                    font-weight: bold
+                }
+
+                .date {
+                    background-color: #ccc
+                }
+
+                /* Toast container styles */
+                /* Toast container styles */
+                .toast-container {
+                    position: fixed;
+                    top: 70px;
+                    right: 10px;
+                    background-color: #333;
+                    color: #fff;
+                    padding: 5px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                    display: block;
+                    align-items: center;
+                    width: 500px;
+                    height: 50px;
+                    max-width: 900px;
+                    /* Adjust the max-width as needed */
+                }
+
+                /* Icon styles */
+                .js-toast-img {
+                    margin-right: 10px;
+                    /* Adjust the margin as needed */
+                    height: 35px;
+                    width: 35px;
+                    align-items: center;
+
+                }
+
+                /* Toast title styles */
+                .js-toast-title {
+                    font-weight: bold;
+                    font-size: 17px;
+                    margin-right: 15px;
+                    align-items: center;
+                }
+
+                /* Toast content styles */
+                .js-toast-content {
+                    margin-top: 5px;
+                    /* Adjust the margin as needed */
+                    margin-right: 15px;
+                    align-items: center;
+                    font-size: 15px;
+                }
+
+                /* Close icon styles (assuming close icon is present) */
+                .js-icon-close {
+                    cursor: pointer;
+                    margin-left: auto;
+                    align-items: center;
+                }
+
+                /* Add more styles as needed */
+                .toast-container.danger-color {
+                    background-color: #ff6347;
+                    /* Tomato color for danger */
+                }
+
+                .toast-container.info-color {
+                    background-color: #87ceeb;
+                    /* SkyBlue color for info */
+                }
+
+                .toast-container.warning-color {
+                    background-color: #ffd700;
+                    /* Gold color for warning */
+                }
+
+                .toast-container.success-color {
+                    background-color: #32cd32;
+                    /* LimeGreen color for success */
+                }
+
+
+                .overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    /* semi-transparent black */
+                    z-index: 1000;
+                    /* higher than other content */
+                }
+
+                .processing-image {
+                    position: fixed;
+                    top: 50%;
+                    left: 51%;
+                    transform: translate(-50%, -50%);
+                    background-color: transparent;
+                    padding: 20px;
+                    border-radius: 10px;
+                    z-index: 1200;
+                    height: 230px;
+                    width: 230px;
+                    /* higher than overlay */
+                }
+
+                .container-login100-form-btn {
+                    position: relative;
+                    /* Ensure z-index works */
+                    z-index: 1;
+                    /* default z-index */
+                }
+
+                .wrap-login100 {
+                    position: relative;
+                }
+
+                .historyinputimage {
+                    width: 95%;
+                    padding: 5px;
+                }
+
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+                .formbold-mb-3 {
+                    margin-bottom: 15px;
+                }
+
+                .formbold-relative {
+                    position: relative;
+                }
+
+                .formbold-opacity-0 {
+                    opacity: 0;
+                }
+
+                .formbold-stroke-current {
+                    stroke: currentColor;
+                }
+
+                #supportCheckbox:checked~div span {
+                    opacity: 1;
+                }
+
+                .formbold-main-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 48px;
+                }
+
+                .formbold-form-wrapper {
+                    margin: 0 auto;
+                    max-width: 570px;
+                    width: 100%;
+                    background: white;
+                    padding: 40px;
+                }
+
+                .formbold-img {
+                    margin-bottom: 45px;
+                }
+
+                .formbold-form-title {
+                    margin-bottom: 30px;
+                }
+
+                .formbold-form-title h2 {
+                    font-weight: 600;
+                    font-size: 28px;
+                    line-height: 34px;
+                    color: #07074d;
+                }
+
+                .formbold-form-title p {
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #536387;
+                    margin-top: 12px;
+                }
+
+                .formbold-input-flex {
+                    display: flex;
+                    gap: 20px;
+                    margin-bottom: 15px;
+                }
+
+                .formbold-input-flex>div {
+                    width: 50%;
+                }
+
+                .formbold-form-input {
+
+                    width: 100%;
+                    padding: 13px 22px;
+                    border-radius: 5px;
+                    border: 1px solid #dde3ec;
+                    background: #ffffff;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #536387;
+                    outline: none;
+                    resize: none;
+                }
+
+                .formbold-form-input:focus {
+                    border-color: #6a64f1;
+                    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                }
+
+                .formbold-form-label {
+                    color: #536387;
+                    font-size: 14px;
+                    line-height: 24px;
+                    display: block;
+                    margin-bottom: 10px;
+                    text-align: left;
+                }
+
+                .formbold-checkbox-label {
+                    display: flex;
+                    cursor: pointer;
+                    user-select: none;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #536387;
+                }
+
+                .formbold-checkbox-label a {
+                    margin-left: 5px;
+                    color: #6a64f1;
+                }
+
+                .formbold-input-checkbox {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border-width: 0;
+                }
+
+                .formbold-checkbox-inner {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 16px;
+                    margin-top: 2px;
+                    border: 0.7px solid #dde3ec;
+                    border-radius: 3px;
+                }
+
+                .formbold-btn {
+                    font-size: 16px;
+                    border-radius: 5px;
+                    padding: 14px 25px;
+                    border: none;
+                    font-weight: 500;
+                    background-color: #6a64f1;
+                    color: white;
+                    cursor: pointer;
+                    margin-top: 25px;
+                }
+
+                .formbold-btn:hover {
+                    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                }
+
+
+                .panel {
+                    border-color: #fff;
+                }
+
+                #property-list img {
+                    width: 100%;
+                    height: 170px;
+                    border: 5px solid #ecf0f1;
+                    margin-bottom: 7px;
+                }
+
+                .label-danger {
+                    background-color: #d9534f;
+                }
+
+                #property-list h4.title-real-estates a {
+                    color: #f39c12;
+                }
+
+                #property-list h4.title-real-estates a:hover {
+                    -webkit-transition: all 1s ease;
+                    -moz-transition: all 1s ease;
+                    -ms-transition: all 1s ease;
+                    -o-transition: all 1s ease;
+                    transition: all 1s ease;
+                    color: #f1c40f;
+                }
+
+                #property-list h4 span {
+                    color: #f1c40f;
+                }
+
+                .btn.btn-default {
+                    border-color: #bdc3c7;
+                    background-color: #bdc3c7;
+                    border: 1px solid #bdc3c7;
+                    padding: 10px;
+                    font-size: 15px;
+                    margin-top: 5px;
+                    height: 40px;
+                }
+
+
+                .btn.btn-warning {
+                    border-color: #f1c40f;
+                    background-color: #f1c40f;
+                    border: 1px solid #f1c40f;
+                    padding: 10px;
+                    font-size: 15px;
+                    margin-top: 5px;
+                    height: 40px;
+                }
+
+
+                @media (max-width: 767px) {
+                    .displaybill {
+                        flex: 0 0 100%;
+                    }
+                }
+
+                table {
+                    width: 50%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+
+                table th,
+                table td {
+                    border: 1px solid #ddd;
+                    padding: 5px;
+                    text-align: center;
+                }
+
+                table th {
+                    background-color: #f2f2f2;
+                }
+
+                table td:first-child {
+                    text-align: left;
+                }
+
+                .total-row td {
+                    font-weight: bold;
+                    text-align: right;
+                }
+
+
+
+                .flex-row {
+                    flex: 0 0 40%;
+                    padding-left: 5px;
+                    font-size: 10px;
+                }
+
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 60%;
+                    height: 60%;
+                    padding: 0px;
+                    margin-top: 30px;
+                    justify-content: start;
+                }
+
+                @media(max-width: 767px) {
+                    .flex-row {
+                        flex: 0 0 100%;
+                    }
+
+                    .flex-container {
+                        margin-left: 55px;
+                        width: 100%;
+                    }
+
+                    table {
+                        margin-left: 55px;
+                        width: 50%;
+                    }
+                }
+
+
+
+                /* Media query for mobile screens */
+            </style>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css"
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <!--===============================================================================================-->
+            <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+            <!--===================================================================formbold-form-label============================-->
+            <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="css/util.css">
+            <link rel="stylesheet" type="text/css" href="css/main.css">
+            <!--===============================================================================================-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+                integrity="sha512-XrlRqfzd7cwbTpoK3mL92Gvpr5Y6UQyKcJvX0+AexBu6BiCZPlYIWt+EifVHJyAdHb+/ZymD0w9es2NTkYq5rA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+            <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+
+<body>
+
+
+
+    <!-- Top Navigation Menu -->
+
+
+
+    <script>
+        function myFunction() {
+            CheckAlreadyLogin()
+            var x = document.getElementById("myLinks");
+            var icon = document.querySelector('.icon');
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                icon.classList.remove('rotate'); // Remove rotate class
+                setTimeout(function () { icon.innerHTML = `<i class="fa fa-bars"></i>`; }, 100); // Change icon 
+            } else {
+                x.style.display = "block";
+                icon.classList.add('rotate'); // Add rotate class
+                icon.innerHTML = ` <i class="fa fa-plus"></i>`; // Change icon immediately
+            }
+        }
+    </script>
+
+
+    <div class="limiter">
+        <div class="topnav">
+            <a onclick="DisplayProfile()" class="active" style="cursor: pointer;">
+                <img class="profile-image"
+                    src="https://w1.pngwing.com/pngs/386/684/png-transparent-face-icon-user-icon-design-user-profile-share-icon-avatar-black-and-white-silhouette-thumbnail.png"
+                    alt="profile">
+                <span></span>
+            </a>
+            <div id="myLinks">
+                <!--Items wil dynamically added here-->
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+
+
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="margin-top: 0px;display: block;" id="home">
+                <div class="hub-container" style="display: block;margin-top: 0px;">
+                    <span class="login100-form-title p-b-49" style="margin-top: 0px;padding-top: 0px;">
+                        ADD BILL
+                    </span>
+
+                    <form id="content" method="POST" enctype="multipart/form-data" class="login100-form validate-form"
+                        id="addbillform">
+
+
+                        <div class="formbold-mb-3">
+                            <label for="name" class="formbold-form-label">
+                                Customer Name *
+                            </label>
+                            <input type="text" name="name" id="name" class="formbold-form-input"
+                                placeholder="Enter Customer Name" />
+                        </div>
+
+
+
+                        <div class="formbold-input-flex">
+                            <div>
+                                <label for="email" class="formbold-form-label"> Email *</label>
+                                <input type="email" name="email" id="email" class="formbold-form-input"
+                                    placeholder="Email" />
+                            </div>
+                            <div>
+                                <label for="phone" class="formbold-form-label"> Phone number *</label>
+                                <input type="number" name="phone" id="phone" class="formbold-form-input"
+                                    placeholder="Mobile No" />
+                            </div>
+                        </div>
+
+                        <div class="formbold-mb-3">
+                            <label for="address" class="formbold-form-label">
+                                Address
+                            </label>
+                            <input type="text" name="address" id="address" class="formbold-form-input"
+                                placeholder="Enter Customer Address" />
+                        </div>
+
+
+
+                </div>
+                <div class="product-form-holder">
+                    <div class="formbold-input-flex productform">
+                        <div class="productname" style=" flex-basis: 50%;">
+                            <label for="productname" class="formbold-form-label"> Product Name * </label>
+                            <input type="text" name="productname" id="productname" class="formbold-form-input" />
+                        </div>
+                        <div style=" flex-basis: 33%;">
+                            <label for="quantity" class="formbold-form-label"> Quantity * </label>
+                            <input type="number" name="quantity" id="quantity" class="formbold-form-input" />
+                        </div>
+                        <div style=" flex-basis: 33%;">
+                            <label for="price" class="formbold-form-label"> Price *</label>
+                            <input type="number" name="price" id="price" class="formbold-form-input"
+                                oninput="addTotalPrice()" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="margin-left: 90%;margin-bottom:30px;cursor:pointer;background-color: blueviolet;width: 30px;height: 30px;border-radius: 50%;padding: 10px;padding-top: 5px;text-align: center;color: white;font-weight: 700;font-size: 16px;margin-top: 25px;"
+                    onclick="addinputproducts(event)">
+                    <button>+</button>
+                </div>
+                <div style="display: flex;margin-bottom: 50px;">
+                    <input type="checkbox" style="height: 19px;width: 19px;cursor: pointer;" id="bagcheckbox"
+                        onclick="addTotalPrice();removebagworth()">
+                    <p style="padding-left: 10px;font-size: 15px;font-weight: 700;color: #536387;"> Add Bag (or) Gift
+                        Wrapper Worth :</p>
+                    <input type="number" id="bagworth" class="formbold-form-input"
+                        style="width: 25%;height: 50px;margin-left: 5px;margin-top: -15px;" oninput="addTotalPrice()">
+                </div>
+                <div class="formbold-input-flex" style="margin-bottom: 70px;height: 40px;">
+                    <div>
+                        <label for="reward-points" class="formbold-form-label"> Reward Points *</label>
+                        <input type="text" name="reward-points" id="reward-points" class="formbold-form-input" />
+                    </div>
+                    <div>
+                        <label for="totalamount" class="formbold-form-label"> Total Price *</label>
+                        <input type="text" name="totalamount" id="totalamount" class="formbold-form-input" readonly />
+                    </div>
+
+                </div>
+                <div class="formbold-input-flex" style="margin-bottom: 90px;">
+                    <div>
+                        <label for="payment-method" class="formbold-form-label"> Payment Method *</label>
+                        <select name="payment-method" id="payment-method" class="formbold-form-input">
+                            <option value="cash">Cash</option>
+                            <option value="card">Card</option>
+                            <option value="upi">UPI</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="payment-status" class="formbold-form-label"> Payment Status *</label>
+                        <select name="payment-status" id="payment-status" class="formbold-form-input">
+                            <option value="paid">Paid</option>
+                            <option value="unpaid">Unpaid</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div style="display: flex;margin-top: 20px;">
+                    <div class="container-login100-form-btn" style="width: 45%;margin-right: 15px;">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit" value="Convert" id="submitinputbutton">
+                                Submit &nbsp; <i class="fas fa-arrow-right submit-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn" style="width: 45%;margin-left: 25px;">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit" value="Convert"
+                                id="submitinput&generatebillbutton">
+                                Print &nbsp; <i class="fas fa-print print-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
+
+
+
+
+            </div>
+            <!--Profile Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="margin-top: 0px;display: none;" id="profile">
+
+            </div>
+            <!--Login Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="login">
+                <form class="login100-form validate-form" style="text-align: left;">
+                    <span class="login100-form-title p-b-49">
+                        Login
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your username"
+                            id="loginemail">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="pass" placeholder="Type your password"
+                            id="loginpassword">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                    <div class="text-right p-t-8 p-b-31">
+                        <a onclick="BlockElements('forgotpassword');" style="cursor: pointer;">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" onclick="SubmitLogin(event)">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+                    <div id="g_id_onload"
+                        data-client_id="960981261075-cm0tni0lhpcbbjfc1e9l1c9d9ak4fld0.apps.googleusercontent.com"
+                        data-context="signup" data-ux_mode="popup" data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                    <div class="flex-c-m" style="margin-left: 0px;">
+
+                        <div id="sign" style="margin-left:0px;" class="g_id_signin" data-type="standard"
+                            data-shape="rectangular" data-theme="outline" data-size="large" data-logo_alignment="left">
+                        </div>
+
+                    </div>
+
+                    <div class="flex-col-c p-t-155" style="margin-top: 0px;padding-top: 50px;">
+                        <a class="txt2">
+                            Don't have a account <span onclick="BlockElements('register')"
+                                style="cursor: pointer;"><u>Sign Up</u></span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <!--Sign Up Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="register">
+                <form class="login100-form validate-form signup" style="text-align: left;" method="post">
+                    <span class="login100-form-title p-b-49">
+                        Register
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                        <span class="label-input100">Username</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your username"
+                            id="registername">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Email is reauired">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your email"
+                            id="registeremail">
+                        <span class="focus-input100" data-symbol="&#x2709;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Mobile no is reauired">
+                        <span class="label-input100">Mobie No</span>
+                        <input class="input100" type="text" name="mobile" placeholder="Type your Mobile No"
+                            id="registermobileno">
+                        <span class="focus-input100" data-symbol="&#x260E;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Image is reauired">
+                        <span class="label-input100">Profile Pic</span>
+                        <input class="input100" type="file" name="file" id="registerimage" placeholder="Type your email"
+                            style="margin-top: 5px;">
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="pass" placeholder="Type your password"
+                            id="registerpassword">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input " data-validate="Confirm Password is required">
+                        <span class="label-input100">Confirm Password</span>
+                        <input class="input100" type="password" name="pass" placeholder="Type your password"
+                            id="registerconfirmpassword">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                    <div class="text-right p-t-8 p-b-31">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="click" onclick="SignUp(event)">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+
+                    <div id="g_id_onload"
+                        data-client_id="960981261075-cm0tni0lhpcbbjfc1e9l1c9d9ak4fld0.apps.googleusercontent.com"
+                        data-context="signup" data-ux_mode="popup" data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                    <div class="flex-c-m" style="margin-left: -5px;">
+
+                        <div id="sign" style="margin-left:0px;" class="g_id_signin" data-type="standard"
+                            data-shape="rectangular" data-theme="outline" data-size="large" data-logo_alignment="left">
+                        </div>
+
+                    </div>
+
+                    <div class="flex-col-c p-t-155" style="margin-top: 0px;padding-top: 50px;">
+                        <a class="txt2">
+                            Already have a account <span onclick="BlockElements('login')"
+                                style="cursor: pointer;"><u>Sign In</u></span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+
+            <!--OTP Verify Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="otpverify">
+                <form class="login100-form validate-form otp-verify" style="text-align: left;">
+                    <span class="login100-form-title p-b-49">
+                        Email Verification
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="OTP is reauired">
+                        <span class="label-input100">OTP</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your OTP sent to mail"
+                            id="verifyotp">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="text-right p-t-8 p-b-31">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="click" onclick="OtpVerify(event)">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+
+                </form>
+            </div>
+
+
+            <!--Forget Password Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="forgotpassword">
+                <form class="login100-form validate-form forgotpassword" style="text-align: left;">
+                    <span class="login100-form-title p-b-49">
+                        Forgot Password
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your Email"
+                            id="forgotpasswordemail">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="text-right p-t-8 p-b-31">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="click" onclick="forgotpassword(event)">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+
+                </form>
+            </div>
+
+            <!--Change Password Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="changepassword">
+                <form class="login100-form validate-form changepassword" style="text-align: left;">
+                    <span class="login100-form-title p-b-49">
+                        Update Password
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="OTP is reauired">
+                        <span class="label-input100">OTP</span>
+                        <input class="input100" type="text" name="username" placeholder="Type your OTP sent to mail"
+                            id="changepasswordotp">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="pass" placeholder="Type your password"
+                            id="changepasswordpassword">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input " data-validate="Confirm Password is required">
+                        <span class="label-input100">Confirm Password</span>
+                        <input class="input100" type="password" name="pass" placeholder="Type your password"
+                            id="changepasswordconfirmpassword">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+
+
+                    <div class="text-right p-t-8 p-b-31">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="click" onclick="ChangePassword(event)">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+
+                </form>
+            </div>
+
+            <!--Change Password Form-->
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="display: none;" id="feedback">
+                <form class="login100-form validate-form feedbackform" style="text-align: left;">
+                    <span class="login100-form-title p-b-49">
+                        FeedBack
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="OTP is reauired">
+                        <span class="label-input100">FeedBack</span>
+                        <input class="input100" type="text" name="feedback" placeholder="Type your Feedback"
+                            id="feedbackinput">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+
+                    <div class="text-right p-t-8 p-b-31">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="click" onclick="SubmitFeedBack(event)">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="txt1 text-center p-t-54 p-b-20" style="padding-top: 20px;">
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="history" id="history" style="display: none;">
+                <div class="row"
+                    style="margin: 0px;background-color: whitesmoke;padding: 20px;border-radius: 10px;justify-content: center;margin-bottom: 30px;">
+                    <div class="col-md-2" style="margin: 0px;padding: 0px;max-width: 122px;">
+                        <label for="search-type" class="formbold-form-label">Search By:</label>
+                        <select id="search-type" class="form-select" style="height: 34px;">
+                            <option value="orderId">Order ID</option>
+                            <option value="customerName">Customer Name</option>
+                            <option value="email">Email</option>
+                            <option value="mobileNo">Phone No</option>
+                            <option value="products">Products</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-2" style="margin-left: 3px;padding: 0px;margin-right: 6px;">
+                        <label for="search-type" class="formbold-form-label">&nbsp;</label>
+                        <input type="text" id="search-input" placeholder="Enter search keyword" class="form-control">
+                    </div>
+                    <div class="col-md-2" style="margin-left: 3px;padding: 0px;max-width: 145px;">
+                        <label for="from-date" class="formbold-form-label">From:</label>
+                        <input type="date" id="from-date" class="form-control">
+                    </div>
+                    <div class="col-md-2" style="margin-left: 3px;margin-right:10px;padding: 0px;max-width: 145px;">
+                        <label for="to-date" class="formbold-form-label">To:</label>
+                        <input type="date" id="to-date" class="form-control">
+                    </div>
+                    <div class="col-md-2" style="margin-left: 3px;padding: 0px;max-width: 120px;">
+                        <label for="sort-by" class="formbold-form-label">Sort By:</label>
+                        <select id="sort-by" class="form-select" style="height: 34px;">
+                            <option value="name">Name</option>
+                            <option value="email">Email</option>
+                            <option value="price">Price</option>
+                            <option value="date">Date</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2" style="margin-left: 3px;padding: 0px;max-width: 120px;">
+                        <label for="sort-order" class="formbold-form-label">Sort Order:</label>
+                        <select id="sort-order" class="form-select" style="height: 34px;">
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2" style="margin-left: 5px;padding: 0px;margin-top: 25px;">
+                        <button class="btn btn-warning " onclick="GetAllDataInRealTime()">Modify Search</buttton>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="store-list" style="display: flex;flex-wrap: wrap;justify-content: center;">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="singlehistory">
+
+            </div>
+
+
+
+            <div class="limiter" style="display: none;margin-left:-15px" id="viewhistory">
+                <div class="container-login100"
+                    style="background-image: url('https://gardanasional.com/images/background/bg-01.jpg');display: flex;flex-direction: column;">
+
+                    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
+                        style="margin-bottom: 30px;width: 380px;padding: 10px;padding-top: 40px;padding-bottom: 40px;">
+                        <form class="login100-form validate-form">
+                            <div class="inputimage-container" id="inputimagecontainer">
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
+                        style="margin-bottom: 30px;width: 380px;padding: 10px;padding-top: 40px;padding-bottom: 40px;">
+                        <form class="login100-form validate-form">
+                            <span class="login100-form-title p-b-30" style="margin-top: -10px;">
+                                Extracted Text
+                            </span>
+
+                            <div class="text-box" style="width: 95%;margin-left: 10px;">
+                                <span class="copy-icon" onclick="copyText('text_tesseract')"><i class="fa fa-clone"
+                                        style="color: black;margin-left: 250px;font-size: 15px;cursor:pointer;"></i></span>
+                                <p style="font-size: 18px;color: #000;" id="text_tesseract">{{ text_tesseract }}</p>
+
+                            </div>
+
+                            <div class="audio-container" style="margin-left: 35px;">
+                                <audio controls style="width: 90%;" id="tesseractaudio">
+                                    <source src="{{ url_for('uploaded_file', filename='audio_speech_tesseract.mp3') }}"
+                                        type="audio/mpeg" id="tesseractaudiosource">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+
+                            <div class="container-login100-form-btn" style="margin-top: 10px;">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <button class="login100-form-btn"
+                                        href="{{ url_for('uploaded_file', filename='audio_speech_tesseract.mp3') }}"
+                                        download="audio_speech_tesseract.mp3">
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
+                        style="width: 380px;padding: 10px;padding-top: 40px;padding-bottom: 40px;">
+                        <form class="login100-form validate-form">
+                            <span class="login100-form-title p-b-30" style="margin-top: -10px;">
+                                AI Output
+                            </span>
+
+                            <div class="text-box" style="width: 95%;margin-left: 10px;">
+                                <span class="copy-icon" onclick="copyText('text_gemini')"><i class="fa fa-clone"
+                                        style="color: black;margin-left: 250px;font-size: 15px;cursor:pointer;"></i></span>
+                                <p style="font-size: 18px;color: black;" id="text_gemini">{{ text_gemini }}</p>
+                            </div>
+
+                            <div class="audio-container" style="margin-left: 35px;">
+                                <audio controls style="width: 90%;" id="geminiaudio">
+                                    <source src="blob:http://127.0.0.1:5500/d586464d-3ccf-4c7e-b08e-dd2a642408c6"
+                                        type="audio/mpeg" id="geminiaudiosource">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+
+                            <div class="container-login100-form-btn" style="margin-top: 10px;">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <button class="login100-form-btn"
+                                        href="{{ url_for('uploaded_file', filename='audio_speech_gemini.mp3') }}"
+                                        download="audio_speech_gemini.mp3">
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="toast-container" style="display: none;">
+            <img class="js-toast-img" src="./assets/dontsee.webp" height="10px" width="10px">
+            <span class="js-toast-title"></span>
+            <span class="js-toast-content"></span>
+        </div>
+
+
+
+
+
+
+
+        <div id="dropDownSelect1"></div>
+        <script type="module">
+
+
+           const M=w;(function(v,D){const b=w,J=v();while(!![]){try{const A=-parseInt(b(0x1cc))/0x1+parseInt(b(0x1eb))/0x2*(-parseInt(b(0x1de))/0x3)+parseInt(b(0x1d3))/0x4+-parseInt(b(0x226))/0x5+parseInt(b(0x1b5))/0x6+parseInt(b(0x1ea))/0x7*(parseInt(b(0x207))/0x8)+parseInt(b(0x21a))/0x9;if(A===D)break;else J['push'](J['shift']());}catch(F){J['push'](J['shift']());}}}(G,0xdafdc));function G(){const V=['then','phoneNumber','reward-points','singlehistory','click','PaymentMethod','avian-pact-378003.firebaseapp.com','5914060PiuqMs','sort','GiftWrapBagWorth','Info','getMonth','querySelector','products','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22flex-row\x22><strong>\x20Email\x20:\x20\x20</strong>&nbsp;\x20','8350836RiFIbD','GetADocument','Email','setHours','customerName','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20colspan=\x224\x22><strong>Bag\x20or\x20Gift\x20Wrap\x20Needed:</strong>\x20','store-list','log','email','value','Success','.productform','en-US','Bill\x20Submited','</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20onclick=\x22ViewData(\x27','CustomerName','push','toLowerCase','960981261075','filter','asc','sort-order','mobileNo','1782564PyLAdZ','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22#\x22\x20style=\x22width:100px\x22\x20class=\x22btn\x20btn-default\x22\x20disabled\x20data-original-title\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20title>\x20₹\x20','exists','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tbody>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','bagcheckbox','payment-status','2541924jHUFMh','[name=\x22quantity\x22]','includes','Product\x20Name\x20not\x20Found\x20at\x20','\x27)\x22\x20class=\x22btn\x20btn-warning\x20pull-right\x22\x20data-original-title\x20title>View\x20<i\x20class=\x22fas\x20fa-eye\x22></i>\x20</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','Gift\x20Shop','OrderID','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<hr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>Customer\x20Name\x20:\x20','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x20none;\x22>','totalamount','9asOjKz','addEventListener','</a></strong>\x20<span\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20class=\x22pull-right\x22>','numeric','preventDefault','quantity','Products','productName','Quantity\x20not\x20Found\x20at\x20','submitinputbutton','Please\x20Enter\x20Customer\x20Name','toUpperCase','574EneeHw','618676RhamKA','\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22container\x22\x20style=\x22margin:\x2020px\x20auto;padding:\x2020px;background-color:\x20#fff;border-radius:\x208px;box-shadow:\x200\x200\x2010px\x20rgba(0,\x200,\x200,\x200.1);display:flex;flex-wrap:wrap;justify-content:center;align\x22>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22flex-container\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22flex-row\x22><strong>\x20Name\x20:\x20</strong>\x20&nbsp;','reload','innerHTML','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr\x20style=\x22border:\x20none;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20colspan=\x224\x22\x20style=\x22border:\x20none;\x22><strong></strong>\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22border:\x20none;\x22>\x20<strong></strong>\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr\x20style=\x22border:\x20none;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20colspan=\x224\x22\x20style=\x22border:\x20none;\x22><strong>Payment\x20Method:</strong>\x20','TotalAmount','phone','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>','data','search-input','Address','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22flex-row\x22><strong>\x20Address\x20:\x20\x20</strong>&nbsp;\x20','RewardPoints','PaymentStatus','Invalid\x20Mobile\x20No','Email\x20is\x20not\x20valid','address','orderId','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>Mobile\x20No\x20:\x20','</p><p>','length','setMonth','location','OrderedDate','Address\x20Not\x20Given','2-digit','toLocaleString','catch','112688jHVGbU','from-date','getElementById','bagworth','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-md-7\x20col-sm-7\x20col-xs-14\x20displaybill\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22panel\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22panel-body\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-5\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22#\x22><img\x20src=\x22https://images.pexels.com/photos/264787/pexels-photo-264787.jpeg?cs=srgb&dl=pexels-pixabay-264787.jpg&fm=jpg\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20class=\x22img-responsive\x22></a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-7\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4\x20class=\x22title-real-estates\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<strong><a\x20href=\x22#\x22>','to-date','date','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr\x20style=\x22border:\x20none;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20colspan=\x224\x22\x20style=\x22font-weight:\x20bold;border:\x20none;\x22>Reward\x20Points\x20:\x20<span\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20style=\x22font-weight:\x20500;\x22>','forEach','payment-method','price','actualToDate','</span></td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22font-weight:\x20bold;border:\x20none;border-radius:\x208px;\x22>\x20<span\x20colspan=\x224\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20style=\x22text-align:\x20right;font-weight:\x20bold;\x22></span>\x20','<span\x20class=\x22label\x20label-danger\x22>','Bag\x20Value\x20Not\x20Given','sort-by','Price\x20not\x20Found\x20at\x20','MobileNo','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20colspan=\x224\x22\x20style=\x22text-align:\x20right;font-weight:\x20bold;\x22>Total</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20style=\x22font-weight:\x20bold;\x22>','14472351KxqQTM','localeCompare','Order\x20Date','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22flex-row\x22><strong>\x20Phone\x20no\x20:\x20\x20</strong>&nbsp;\x20','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22display:\x20flex;width:\x20auto;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th>S.No</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th>Product\x20Name</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th>Quantity</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th>Unit\x20Price</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<th>Sub\x20Price</th>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tbody>'];G=function(){return V;};return G();}import{initializeApp}from'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';import{getAnalytics}from'https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js';const firebaseConfig={'apiKey':'AIzaSyCBQSAtCbq6-QWo0UCU2R1G4t-f5OQKw1k','authDomain':M(0x225),'databaseURL':'https://avian-pact-378003-default-rtdb.asia-southeast1.firebasedatabase.app','projectId':'avian-pact-378003','storageBucket':'avian-pact-378003.appspot.com','messagingSenderId':M(0x1c7),'appId':'1:960981261075:web:0eea8a286549efc5f058e6','measurementId':'G-LPBMBH2TFM'},app=initializeApp(firebaseConfig),analytics=getAnalytics(app);import{getFirestore,doc,setDoc,getDoc,getDocs,collection,addDoc,updateDoc,deleteDoc,deleteField,onSnapshot}from'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';function w(v,D){const J=G();return w=function(A,F){A=A-0x1af;let a=J[A];return a;},w(v,D);}const db=getFirestore();document[M(0x209)](M(0x1e7))[M(0x1df)](M(0x223),v=>{const d=M;v[d(0x1e2)](),SubmitBill(v);}),document[M(0x209)](M(0x20a))['value']=0x0,document['getElementById'](M(0x221))[M(0x1be)]=0x0,document[M(0x209)](M(0x1dd))[M(0x1be)]=0x0;async function SubmitBill(){const j=M;event['preventDefault'](),console['log']('submitbutton\x20clicked');const v=generateUniqueString(0x8),D=doc(db,j(0x1d8),v),J=Number(document['getElementById']('reward-points')[j(0x1be)]),A=document[j(0x209)](j(0x210))[j(0x1be)],F=document[j(0x209)](j(0x1d2))[j(0x1be)],a=document[j(0x209)]('name')[j(0x1be)],X=document[j(0x209)](j(0x1bd))['value'],Y=document['getElementById'](j(0x1f1))['value'];let y=document['getElementById'](j(0x1fb))[j(0x1be)];const I=document['querySelectorAll'](j(0x1c0)),Q=document[j(0x209)](j(0x1d1))['checked'];let g=0x0;const W=[];let C=0x0;if(Q){g=Number(document[j(0x209)](j(0x20a))[j(0x1be)]);if(!g){showToast(j(0x215),'Info',0x1);return;}C+=g;}else g=0x0;console['log'](I);var K=![];I[j(0x20f)]((i,r)=>{const P=j,E=i[P(0x1b2)]('[name=\x22productname\x22]')['value'],f=Number(i[P(0x1b2)](P(0x1d4))['value']),x=Number(i['querySelector']('[name=\x22price\x22]')[P(0x1be)]);if(!E){showToast(P(0x1d6)+(r+0x1),P(0x1b0),0x1),K=!![];return;}if(!f){showToast(P(0x1e6)+(r+0x1),'Info',0x1),K=!![];return;}if(!x){showToast(P(0x217)+(r+0x1),P(0x1b0),0x1),K=!![];return;}C+=Number(x),W[P(0x1c5)]({'productName':E,'quantity':f,'price':x});});if(K)return;if(!a){showToast(j(0x1e8),j(0x1b0),0x1);return;}console[j(0x1bc)](Y[j(0x1ff)]);if(Y[j(0x1ff)]!=0xa){showToast(j(0x1f9),j(0x1b0),0x1);return;}if(!validateEmail(X)){showToast(j(0x1fa),j(0x1b0),0x1);return;}!y&&(y=j(0x203));const L=new Date(),u={'year':j(0x1e1),'month':j(0x204),'day':j(0x204),'hour':j(0x204),'minute':j(0x204),'second':j(0x204),'hour12':!![]},B=L[j(0x205)](j(0x1c1),u);console['log'](B);let l={'id':v,'customerName':a,'email':X,'phoneNumber':Y,'address':y,'products':W,'BagNeeded':Q,'GiftWrapBagWorth':g,'OrderedDate':B,'TotalAmount':C,'RewardPoints':J,'PaymentMethod':A,'PaymentStatus':F};console[j(0x1bc)](l);const c=await setDoc(D,{'OrderID':l['id'],'CustomerName':l['customerName'],'Email':l['email'],'MobileNo':l[j(0x220)],'Address':l[j(0x1fb)],'Products':l[j(0x1b3)],'BagNeeded':l['BagNeeded'],'GiftWrapBagWorth':l[j(0x1af)],'OrderedDate':l['OrderedDate'],'TotalAmount':l[j(0x1f0)],'RewardPoints':l[j(0x1f7)],'PaymentMethod':l['PaymentMethod'],'PaymentStatus':l[j(0x1f8)]})[j(0x21f)](()=>{const o=j;showToast(o(0x1c2),o(0x1bf),0x3),setTimeout(()=>{const e=o;window[e(0x201)][e(0x1ed)]();},0x7d0);})[j(0x206)](i=>{console['log'](i);});}async function GetAllDataInRealTime(){const R=M,v=document[R(0x209)](R(0x208))[R(0x1be)],D=document[R(0x209)](R(0x20c))[R(0x1be)],J=document['getElementById'](R(0x216))[R(0x1be)],A=document[R(0x209)](R(0x1ca))[R(0x1be)],F=document['getElementById']('search-type')[R(0x1be)],a=document[R(0x209)](R(0x1f4))[R(0x1be)][R(0x1c6)](),X=new Date(v),Y=new Date(D),y=new Date();y[R(0x200)](y[R(0x1b1)]()-0x1);const I=new Date(),Q=v?X:y,g=D?Y:I,W=collection(db,'Gift\x20Shop'),C=await getDocs(W);let K=[];C[R(0x20f)](u=>{const p=R,B=new Date(u['data']()['OrderedDate']);B[p(0x1b8)](0x0,0x0,0x0,0x0),Q['setHours'](0x0,0x0,0x0,0x0),g[p(0x1b8)](0x0,0x0,0x0,0x0),console[p(0x1bc)](p(0x21c),B),console[p(0x1bc)]('from\x20date',Q),console[p(0x1bc)](p(0x212),g),B>=Q&&B<=g&&K[p(0x1c5)](u[p(0x1f3)]());}),K=K[R(0x1c8)](u=>{const h=R;switch(F){case h(0x1fc):return u[h(0x1d9)][h(0x1c6)]()[h(0x1d5)](a);case h(0x1b9):return u[h(0x1c4)][h(0x1c6)]()[h(0x1d5)](a);case h(0x1bd):return u[h(0x1b7)][h(0x1c6)]()[h(0x1d5)](a);case h(0x1cb):return u[h(0x218)][h(0x1c6)]()[h(0x1d5)](a);case h(0x1b3):return u['Products']['some'](B=>B['productName'][h(0x1c6)]()[h(0x1d5)](a));default:return!![];}});if(J==='name')K[R(0x227)]((u,B)=>{const n=R;return A===n(0x1c9)?u[n(0x1c4)][n(0x21b)](B[n(0x1c4)]):B['CustomerName'][n(0x21b)](u[n(0x1c4)]);});else{if(J===R(0x1bd))K[R(0x227)]((u,B)=>{const T=R;return A==='asc'?u['Email']['localeCompare'](B[T(0x1b7)]):B[T(0x1b7)][T(0x21b)](u[T(0x1b7)]);});else{if(J===R(0x211))K[R(0x227)]((u,B)=>{const t=R;return A===t(0x1c9)?u[t(0x1f0)]-B[t(0x1f0)]:B['TotalAmount']-u[t(0x1f0)];});else J===R(0x20d)&&K[R(0x227)]((u,B)=>{const q=R,l=new Date(u[q(0x202)]),c=new Date(B[q(0x202)]);return A===q(0x1c9)?l-c:c-l;});}}let L='';console[R(0x1bc)](K),K[R(0x20f)](u=>{const S=R;L+=S(0x20b)+u[S(0x1d9)]+S(0x1e0)+u[S(0x202)]+S(0x1da)+u[S(0x1c4)]+'</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>Email\x20:\x20'+u[S(0x1b7)]+S(0x1fd)+u[S(0x218)]+S(0x1fe),console[S(0x1bc)](u[S(0x1e4)]['length']),u[S(0x1e4)][S(0x20f)]((B,l)=>{const m=S;console['log']('index',l),u[m(0x1e4)]['length']==l+0x1?L+='<span\x20class=\x22label\x20label-danger\x22>'+B[m(0x1e5)]+'</span>\x20':L+=m(0x214)+B['productName']+'</span>\x20|\x20';}),L+=S(0x1cd)+u[S(0x1f0)]+S(0x1c3)+u['OrderID']+S(0x1d7);}),document[R(0x209)](R(0x1bb))[R(0x1ee)]=L,BlockElements('history'),L='';};window['GetAllDataInRealTime']=GetAllDataInRealTime;async function GetADocument(v){const U=M;var D=doc(db,U(0x1d8),v);const J=await getDoc(D);if(J[U(0x1ce)]()){let A=J[U(0x1f3)](),F=U(0x1ec)+A[U(0x1c4)]['toUpperCase']()+U(0x21d)+A[U(0x218)]+U(0x1b4)+A['Email']+U(0x1f6)+A[U(0x1f5)]+U(0x21e),a=0x0;A[U(0x1e4)][U(0x20f)]((X,Y)=>{const H=U;a+=X[H(0x211)],F+=H(0x1db)+(Y+0x1)+H(0x1cf)+X[H(0x1e5)][H(0x1e9)]()+H(0x1cf)+X[H(0x1e3)]+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>'+X[H(0x211)]/X[H(0x1e3)]+H(0x1cf)+X['price']+H(0x1f2);}),F+=U(0x219)+a+U(0x1ba)+A['BagNeeded']+U(0x1cf)+A[U(0x1af)]+U(0x1ef)+A[U(0x224)][U(0x1e9)]()+U(0x1dc)+A[U(0x1f8)][U(0x1e9)]()+U(0x20e)+A[U(0x1f7)]+U(0x213)+A['TotalAmount']+U(0x1d0),BlockElements(U(0x222)),document[U(0x209)](U(0x222))[U(0x1ee)]=F;}else alert('No\x20Documents\x20Found');}window[M(0x1b6)]=GetADocument;
+
+
+        </script>
+        <script>
+            function ViewData(id) {
+                window.GetADocument(id)
+            }
+            function DisplayHis() {
+                console.log("In getdata")
+                window.GetAllDataInRealTime(event)
+            };
+            function removebagworth() {
+                const isChecked = document.getElementById("bagcheckbox").checked;
+                if (!isChecked) {
+                    document.getElementById("bagworth").value = 0
+                }
+            }
+            function generateUniqueString(length) {
+                const characters = '0123456789';
+                let result = '';
+
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * characters.length);
+                    result += characters.charAt(randomIndex);
+                }
+
+                return result;
+            }
+
+
+
+            function validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            function addTotalPrice() {
+                const products = [];
+                const productForms = document.querySelectorAll('.productform');
+                let price = 0
+
+                productForms.forEach(productForm => {
+
+                    price += Number(productForm.querySelector('[name="price"]').value);
+
+                });
+                const isChecked = document.getElementById("bagcheckbox").checked;
+                let bagworth = 0
+
+                if (isChecked) {
+                    bagworth = Number(document.getElementById("bagworth").value)
+                    if (!bagworth) {
+                        return
+                    }
+                    price += bagworth;
+                }
+                document.getElementById("totalamount").value = price
+                document.getElementById("reward-points").value = Math.round(price * 0.1);
+            }
+
+            function addinputproducts(event) {
+                event.preventDefault();
+                let div = document.createElement('div');
+                div.classList.add('formbold-input-flex');
+                div.classList.add('productform');
+                div.innerHTML = `<div class="productname" style="flex-basis: 50%;">
+                        <label for="productname" class="formbold-form-label"> Product Name * </label>
+                        <input type="text" name="productname"  class="formbold-form-input" />
+                    </div>
+                    <div style="flex-basis: 33%;">
+                        <label for="quantity" class="formbold-form-label"> Quantity * </label>
+                        <input type="number" name="quantity" class="formbold-form-input" />
+                    </div>
+                    <div style="flex-basis: 33%;">
+                        <label for="price" class="formbold-form-label"> Price * </label>
+                        <input type="number" name="price" class="formbold-form-input" oninput="addTotalPrice()"/>
+                    </div>
+                    <i class="fas fa-trash delete-icon" style="margin-top: 55px;font-size: 15px;margin-right: -30px;cursor: pointer;"></i>`;
+
+                document.querySelector(".product-form-holder").appendChild(div);
+
+                div.querySelector('.delete-icon').addEventListener('click', function () {
+                    div.remove();
+                    addTotalPrice()
+                });
+            }
+
+
+
+            function ChangeInputType(type) {
+                if (type == "text") {
+                    document.querySelector('.input-area').innerHTML = `<textarea class="text-box" name="user_text" rows="5" cols="50"
+                             placeholder="Enter text..."></textarea>`
+                    ApplyBackgroundColorTransition('.button1', 'rgba(0, 0, 0, 0)');
+                    ApplyBackgroundColorTransition('.button2', 'rgb(0, 208, 255)');
+                    ApplyBackgroundColorTransition('.button3', 'rgb(0, 208, 255)');
+                    document.querySelector('.drag-drop-area').style.display = 'none';
+                } else if (type == "pdf") {
+                    document.querySelector('.input-area').innerHTML = `<input type="file" name="pdf" accept=".pdf"  style="margin: 10px;margin-bottom: 20px;background-color: #c6ccd175;border-radius: 10px;padding: 5px;width: 95%;height: 50px;font-size: 14px;" id="inputpdf">`
+                    ApplyBackgroundColorTransition('.button3', 'rgba(0, 0, 0, 0)');
+                    ApplyBackgroundColorTransition('.button2', 'rgb(0, 208, 255)');
+                    ApplyBackgroundColorTransition('.button1', 'rgb(0, 208, 255)');
+                    document.querySelector('.drag-drop-area').style.display = 'block';
+                    inputfile = "inputpdf"
+                } else {
+                    document.querySelector('.input-area').innerHTML = `<input type="file" name="image" accept=".png, .jpg, .jpeg"  style="margin: 10px;margin-bottom: 20px;background-color: #c6ccd175;border-radius: 10px;padding: 5px;width: 95%;height: 50px;font-size: 14px;" id="inputimage">`
+                    ApplyBackgroundColorTransition('.button2', 'rgba(0, 0, 0, 0)');
+                    ApplyBackgroundColorTransition('.button1', 'rgb(0, 208, 255)');
+                    ApplyBackgroundColorTransition('.button3', 'rgb(0, 208, 255)');
+                    document.querySelector('.drag-drop-area').style.display = 'block';
+                    inputfile = "inputimage"
+                }
+            }
+
+            function ApplyBackgroundColorTransition(selector, color) {
+                const element = document.querySelector(selector);
+                element.style.transition = 'background-color 0.5s ease';
+                setTimeout(() => {
+                    element.style.backgroundColor = color;
+                }, 100);
+            }
+
+            function showToast(str, war, no) {
+                const toastContainer = document.querySelector('.toast-container');
+                const title = document.querySelector('.js-toast-title');
+                const content = document.querySelector('.js-toast-content');
+                const image = document.querySelector('.js-toast-img');
+
+                // Reset classes, width, and height
+                toastContainer.className = 'toast-container';
+                toastContainer.style.width = 'auto';
+                toastContainer.style.height = 'auto';
+
+                if (no == 0) {
+                    image.src = './images/danger.webp';
+                    toastContainer.classList.add('danger-color');
+                } else if (no == 1) {
+                    image.src = './images/info.svg';
+                    toastContainer.classList.add('info-color');
+                } else if (no == 2) {
+                    image.src = './images/warning.jpg';
+                    toastContainer.classList.add('warning-color');
+                } else if (no == 3) {
+                    image.src = './images/success.png';
+                    toastContainer.classList.add('success-color');
+                }
+                title.innerHTML = `${war}`;
+                content.innerHTML = `${str}`;
+                // Calculate and set the container width and height
+                const containerWidth = title.length + content.length + 500; // Add some padding
+                toastContainer.style.width = `${containerWidth}px`;
+                // Add transition effect
+                toastContainer.style.transition = 'all 0.5s ease-in-out';
+                toastContainer.style.display = 'block';
+                setTimeout(() => {
+                    toastContainer.style.opacity = 1;
+                }, 1);
+
+                setTimeout(() => {
+                    toastContainer.style.opacity = 0;
+                    setTimeout(() => {
+                        toastContainer.style.display = 'none';
+                    }, transitionDuration * 1000);
+                }, 3000);
+            }
+
+
+            function Logout() {
+                localStorage.removeItem("userdata")
+                showToast("Logout Successfull", "Success", 3)
+                CheckAlreadyLogin()
+                return
+            }
+
+            function SystemLogout() {
+                localStorage.removeItem("userdata")
+                return
+            }
+            setInterval(() => {
+                CheckAlreadyLogin()
+            }, 60000)
+            CheckAlreadyLogin()
+            function CheckAlreadyLogin() {
+                const storedData = localStorage.getItem("userdata");
+                if (storedData) {
+                    const userData = JSON.parse(storedData);
+                    const token = {
+                        token: userData.token
+                    }
+
+                    fetch("http://localhost:8080/tokenvalidity", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(token),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            let html = ""
+                            if (data.message) {
+                                document.getElementById("token").value = token.token;
+                                html = `       
+                            <a onclick="BlockElements('home')" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fas fa-file-invoice-dollar" style="padding: 5px;"></ion-icon>Home</a>
+                            <a onclick="DisplayHistory()" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fa fa-history" style="padding: 5px;"></ion-icon>History</a>
+                            <a onclick="Logout();" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;margin-right: -20px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fa fa-sign-out" style="padding: 5px;"></ion-icon>Logout</a>`
+                            } else {
+                                html = `         
+                            <a onclick="BlockElements('home')" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fas fa-file-invoice-dollar" style="padding: 5px;"></ion-icon>Home</a>
+                            <a onclick="DisplayHis(event)" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fas fa-list-alt" style="padding: 5px;"></ion-icon>Bill History</a> 
+                             <a onclick="BlockElements('login')" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fa fa-sign-in" style="padding: 5px;"></ion-icon>Sign IN</a>`
+                                SystemLogout()
+                            }
+                            document.getElementById("myLinks").innerHTML = html;
+                        })
+                        .catch(error => {
+                            showToast(error.message, "Danger", 0);
+                        });
+                } else {
+                    let html = ""
+                    html = `         
+                            <a onclick="BlockElements('home')" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon  class="fas fa-file-invoice-dollar" style="padding: 5px;"></ion-icon>Home</a>
+                            <a onclick="DisplayHis(event)" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fas fa-list-alt" style="padding: 5px;"></ion-icon>Bill History</a>
+                             <a onclick="BlockElements('login')" class="navicons" style="font-size: 14px;padding-right: 5px;padding-left: 5px;padding-bottom: 17px;padding-top: 17px;cursor:pointer;"><ion-icon class="fa fa-sign-in" style="padding: 5px;"></ion-icon>Sign IN</a>`
+                    document.getElementById("myLinks").innerHTML = html;
+                }
+
+            }
+
+            function DisplayProfile() {
+                const storedData = localStorage.getItem("userdata");
+                if (storedData) {
+                    const userData = JSON.parse(storedData);
+                    const token = {
+                        token: userData.token
+                    }
+
+                    fetch("http://localhost:8080/getuserbyid", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(token),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data)
+                            let html = ""
+                            if (data.message) {
+                                let count = data.message.textcount + data.message.imagecount + data.message.pdfcount + data.message.ocrcount + data.message.aicount
+                                html = `
+                                        <div class="hub-container" style="display: block;margin-top: 0px;">
+                                <span class="login100-form-title p-b-49"
+                                    style="margin-top: 0px;padding-top: 0px;padding-bottom: 0px;">
+                                    Profile
+                                </span>
+
+                                <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"
+                                    style="margin-top: -100px;padding-top: 0px;">
+                                    <div class="card p-4">
+                                        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button
+                                                class="btn btn-secondary"> <img src="${data.message.image}" height="100"
+                                                    width="100" /></button> <span class="name mt-3"
+                                                style="padding: 10px;padding-top: 0px;">${data.message.name}</span> <span class="idd"
+                                                style="padding: 10px;padding-top: 0px;">${data.message.email}</span>
+                                            <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span
+                                                    class="idd1">${data.message.phonenumber}</span> <span><i class="fa fa-copy"></i></span>
+                                            </div>
+
+                                            <div
+                                                style="margin-top: 10px;background-color: #d6dfe887;padding: 50px;border-radius: 10px;line-height: 30px;">
+                                                <h9><span style="font-weight: bold;">Text Conversion</span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; ${data.message.textcount}</h9>
+                                                <br>
+                                                <h9><span style="font-weight: bold;">Image Conversion</span>&nbsp; : &nbsp; ${data.message.imagecount}</h9>
+                                                <br>
+                                                <h9><span style="font-weight: bold;">PDF Conversion</span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; ${data.message.pdfcount}</h9>
+                                                <br>
+                                                <h9><span style="font-weight: bold;">Text
+                                                        Extraction</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+                                                    &nbsp; ${data.message.ocrcount}</h9>
+                                                <br>
+                                                <h9><span style="font-weight: bold;">AI Used </span>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    : &nbsp; ${data.message.aicount}</h9>
+                                                <hr>
+                                                <h9><span style="font-weight: bolder;">Total
+                                                        Conversion</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; ${data.message.totalcount}</h9>
+                                            </div>
+
+                                            <div class=" px-2 rounded mt-4 date "> <span class="join">Joined ${data.message.createddate}</span> </div>
+
+
+
+                                            <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span
+                                                    class="number">${count} <span class="follow">Total Useage</span></span> </div>
+
+                                            <div class=" d-flex mt-2"> <button class="btn1 btn-dark"
+                                                    style="border-radius: 5px;" onclick="BlockElements('feedback')">FeedBack</button> </div>
+                                            <div class="text mt-3" style="margin-left: 30px;"> <span
+                                                    style="text-align: center;">Unlock your creativity and
+                                                    share your thoughts!. To make a Updated future</span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text mt-3" style="text-align:center;font-size:3px"> 
+                                    <span style="text-align: center;>
+                                         <p style="font-size:3px;text-align:center">
+                                             &copy;
+                                            <span id="year"></span>
+                                            TechnoWild. All rights reserved.
+                                         </p>
+                                    </span>
+                                </div>
+                            </div>`
+                            }
+                            document.getElementById("profile").innerHTML = html;
+                            document.getElementById("year").innerHTML = new Date().getFullYear();
+                            BlockElements('profile')
+                        })
+                        .catch(error => {
+                            showToast(error.message, "Danger", 0);
+                        });
+                } else {
+                    showToast("Login to Visit Profile", "Info", 1)
+
+                }
+
+            }
+
+
+            function HideAll() {
+                document.getElementById("home").style.display = 'none';
+                document.getElementById("login").style.display = 'none';
+                document.getElementById("register").style.display = 'none';
+                document.getElementById("profile").style.display = 'none';
+                document.getElementById("otpverify").style.display = 'none';
+                document.getElementById("forgotpassword").style.display = 'none';
+                document.getElementById("changepassword").style.display = 'none';
+                document.getElementById("history").style.display = 'none';
+                document.getElementById("viewhistory").style.display = 'none';
+                document.getElementById("feedback").style.display = 'none';
+                document.getElementById("singlehistory").style.display = 'none';
+
+
+            }
+            var recentPage = ""
+            function BlockElements(id) {
+                HideAll()
+                document.getElementById(id).style.display = 'block';
+                recentPage = id
+            }
+
+
+
+
+            function validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function findNumberLength(number) {
+                const numberString = number.toString();
+                const length = numberString.length;
+                return length;
+            }
+            function isUsernameValid(username) {
+                const lettersAndSpacesRegex = /^[a-zA-Z ]+$/;
+                const isValid = lettersAndSpacesRegex.test(username);
+                return isValid;
+            }
+
+
+            function SubmitLogin(event) {
+                event.preventDefault();
+                const formData = {
+                    email: (document.getElementById("loginemail").value).trim(),
+                    password: (document.getElementById("loginpassword").value).trim()
+                };
+                if (formData.email.trim() == "") {
+                    showToast("Please Enter your Email", "Info", 1);
+                    return
+                }
+                if (formData.password.trim() == "") {
+                    showToast("Please Enter your Password", "Info", 1);
+                    return
+                }
+                if (formData.password.trim().length < 6) {
+                    showToast("Password must be atleast 6 Characters", "Info", 1);
+                    return
+                }
+                if (!validateEmail(formData.email)) {
+                    showToast("Please Enter a Valid Email", "Info", 1);
+                    return
+                }
+                // Send a POST request to your Go backend
+                fetch("http://localhost:8080/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            showToast(data.message, "Warning", 2);
+                        }
+                        else if (data.token) {
+                            showToast("Login Successfull", "Success", 3);
+
+                            setTimeout(() => {
+                                const userData = {
+                                    'token': data.token,
+                                    'username': formData.email
+                                }
+                                document.getElementById("token").value = userData.token;
+                                const jsonString = JSON.stringify(userData);
+                                localStorage.setItem('userdata', `${jsonString}`);
+                                document.getElementById("loginemail").value = '';
+                                document.getElementById("loginpassword").value = "";
+                                BlockElements('home');
+                                CheckAlreadyLogin()
+                            }, 1000);
+
+                        } else {
+                            event.preventDefault();
+                            showToast("Login failed. Please check your credentials.", "Danger", 0);
+                        }
+                    })
+                    .catch(error => {
+                        showToast(error.message, "Danger", 0);
+                    });
+            }
+
+
+
+            function SignInWithGoogle(details) {
+
+                // Send a POST request to your Go backend
+                fetch("http://localhost:8080/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(details),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            showToast(data.message, "Warning", 2);
+                        }
+                        else if (data.token) {
+                            showToast("Login Successfull", "Success", 3);
+
+                            setTimeout(() => {
+                                const userData = {
+                                    'token': data.token,
+                                    'username': details.email
+                                }
+                                document.getElementById("token").value = userData.token;
+                                const jsonString = JSON.stringify(userData);
+                                localStorage.setItem('userdata', `${jsonString}`);
+                                document.getElementById("loginemail").value = '';
+                                document.getElementById("loginpassword").value = "";
+                                BlockElements('home');
+                                CheckAlreadyLogin()
+                            }, 1000);
+
+                        } else {
+                            event.preventDefault();
+                            showToast("Login failed. Please check your credentials.", "Danger", 0);
+                        }
+                    })
+                    .catch(error => {
+                        showToast(error.message, "Danger", 0);
+                    });
+            }
+
+            function SignUpWithGoogle(details) {
+
+                fetch("http://localhost:8080/signupwithgoogle", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(details),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            showToast(data.message, "Success", 3)
+                            if (data.message == 'Account Created Successfully') {
+                                BlockElements('login')
+                            }
+                        } else if (data.error) {
+                            showToast(`${data.error}`, "Danger", 0);
+                        }
+                    })
+                    .catch(error => {
+
+                        showToast(`Error: ${error.message}`, "Danger", 0);
+                    });
+            }
+
+
+
+            // Sign in // Sign in // Sign in // Sign in
+            function handleCredentialResponse(response) {
+                const responsePayload = decodeJwtResponse(response.credential);
+
+                let infos = {
+                    name: responsePayload.name + responsePayload.given_name + responsePayload.family_name,
+                    image: responsePayload.picture,
+                    email: responsePayload.email,
+                    password: responsePayload.sub,
+                }
+
+                let infosL = JSON.stringify(infos)
+                if (recentPage == 'login') {
+                    SignInWithGoogle(infos);
+                } else if (recentPage == 'register') {
+                    SignUpWithGoogle(infos);
+                }
+                console.log(infosL)
+            }
+
+
+            // decodeJwtResponse()
+            function decodeJwtResponse(data) {
+                let tokens = data.split(".");
+                return JSON.parse(atob(tokens[1]))
+            }
+
+            // Sign Out
+            out.addEventListener("click", () => {
+                localStorage.clear()
+                info.classList.add("d-none")
+                sign.classList.remove("d-none")
+                out.classList.add("d-none")
+            })
+
+        </script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <!-- bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
